@@ -3,20 +3,18 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-const { cats } = require('../data/cats');
-
 describe('cats routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
 
-  it('/cats should return a list of cats', async () => {
-    const res = await request(app).get('/cats');
-    const expected = cats.map((cat) => {
-      return { id: cat.id, name: cat.name };
-    });
-    expect(res.body).toEqual(expected);
-  });
+  // it('/cats should return a list of cats', async () => {
+  //   const res = await request(app).get('/cats');
+  //   const expected = cats.map((cat) => {
+  //     return { id: cat.id, name: cat.name };
+  //   });
+  //   expect(res.body).toEqual(expected);
+  // });
 
   it('/cats/:id should return cat detail', async () => {
     const res = await request(app).get('/cats/1');
